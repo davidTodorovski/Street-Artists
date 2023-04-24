@@ -1,0 +1,37 @@
+.nav {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    position: absolute;
+    top: 9rem;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.5s;
+    height: 0px;
+    padding: 0rem;
+    background-color: var(--primary-color-default);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+
+    
+
+    &.show-nav {
+    height: 22rem;
+    padding: 0.5rem;
+    }
+
+    & li a {
+        color: #fcebd5;
+        font-weight: 100;
+        font-size: 3.4rem;
+        text-decoration: none;
+        font-family: var(--secondary-font);
+        
+
+    }
+  }
+ 

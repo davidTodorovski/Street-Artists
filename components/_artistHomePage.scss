@@ -1,0 +1,119 @@
+.artist-home-page {
+    font-family: var(--secondary-font);
+    color: var(--background-color-one);
+    min-height: calc(100vh - 9rem);
+    
+    
+    
+    .summary {
+        padding: 2rem 0;
+        background-color: var(--background-color-two);
+
+        .summary-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: center;
+
+            @media (max-width:700px) {
+                row-gap: 1.5rem;
+            }
+
+            &.container {
+                @media (max-width:600px) {
+                    padding: 0 2rem;
+                }
+            }
+        }
+
+         &__items,
+         &__income,
+         &__bidding {
+             flex-basis: 32%;
+             background-color: var(--primary-color-default);
+             padding: 1rem;
+             border-radius: 2px;
+             box-shadow: var(--primary-shadow);
+             display: flex;
+             flex-direction: column;
+
+             @media (max-width:700px) {
+                flex-basis: 48.5%;
+            }
+         }
+
+         
+
+         &__bidding {
+             background-color: var(--primary-color-contrast);
+
+             @media (max-width:700px) {
+                 flex-basis: 100%;
+             }
+         }
+
+         &__label {
+             text-transform: capitalize;
+             font-size: 1.8rem;
+             font-weight: 300;
+         }
+
+         &__value {
+             font-size: 4.6rem;
+             font-weight: 500;
+             margin: auto 0;
+
+             @media (max-width:481px) {
+                 font-size: 3.8rem;
+             }
+         }
+
+         &__cur-bid {
+             font-size: 1.8rem;
+             font-weight: 300;
+         }
+     }
+
+     .income-chart {
+         padding: 3rem 2rem;
+
+        .income-chart-container {
+           
+            p {
+                color: var(--primary-color-default);
+                font-size: 2.6rem;
+                font-weight: 300;
+                margin-bottom: 1rem;
+
+                @media (max-width:700px) {
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        &__btn-container {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+
+            @media(max-width: 481px) {
+                justify-content: space-between;
+                gap: 0rem;
+            }
+
+        }
+
+        &__btn {
+            background-color: var(--primary-color-default);
+            color: var(--background-color-one);
+            flex-shrink: 0;
+            transition: all 0.2s;
+
+            &--active {
+                background-color: var(--primary-color-contrast);
+            }
+        }
+        
+     }
+    
+}

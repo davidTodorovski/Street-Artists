@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Street Artists</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="icon" href="./images/logo.png">
+  </head>
+  <body>
+    <main>
+      <header class="header-home">
+        <h2 class="heading">Street ARTists</h2>
+      </header>
+      <header class="header-artist">
+        <img class="logo" src="./images/logo.png" alt="" />
+        <h2 class="heading">Street ARTists</h2>
+        <ul class="nav">
+          <li><a href="#artists">Home</a></li>
+          <li><a href="#artists/items">Items</a></li>
+          <li><a href="#auction">Auction</a></li>
+        </ul>
+        <button class="menu-icon" id="menu-toggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </header>
+      <header class="header-visitor">
+        <img class="logo" src="./images/logo.png" alt="" />
+        <h2 class="heading">Street ARTists</h2>
+        <a href="#auction" class="menu-icon menu-icon--visitor">
+          <img src="./images/gavel.png" alt="gavel">
+        </a>
+      </header>
+
+      <!-- Landing page -->
+      <section class="home-page" id="homePage">
+        <img class="" src="./images/logo.png" alt="" />
+
+        <div class="join">
+          <div class="join__artist">
+            <p>Join as Artist</p>
+            <div>
+              <select class="join__select input input--dark" id="artistSelect">
+                <option value="">Choose</option>
+              </select>
+            </div>
+          </div>
+          <div class="join__visitor">
+            <p>Join as Visitor</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Artist home page -->
+      <section class="artist-home-page" id="artistHomePage">
+    
+          <div class="summary">
+            <div class="summary-container container">
+              <div class="summary__items">
+                <p class="summary__label">Total items sold</p>
+                <p class="summary__value summary__value--sold">0/0</p>
+              </div>
+              <div class="summary__income">
+                <p class="summary__label">Total income</p>
+                <p class="summary__value summary__value--total">0000</p>
+              </div>
+              <div class="summary__bidding">
+                <p class="summary__label">Live auctioning item</p>
+                <p class="summary__value summary__value--cur-bid">0000</p>
+                <p class="summary__cur-bid">current bid</p>
+              </div>
+            </div>
+          </div>
+      
+        <div class="income-chart">
+          <div class="income-chart-container container">
+          <p>Display my income for last</p>
+          <div class="income-chart__btn-container">
+            <button class="btn income-chart__btn income-chart__btn--active" id="last7">7 days</button>
+            <button class="btn income-chart__btn" id="last14">14 days</button>
+            <button class="btn income-chart__btn" id="last30">1 month</button>
+            <button class="btn income-chart__btn" id="last365">1 year</button>
+          </div>
+
+          <div class="chart-container" style="width:100%; height:60vh">
+          <canvas id="myCanvas"></canvas>
+          </div>
+ 
+          </div>
+        </div>
+      </section>
+
+      <!-- Artist items -->
+      <section class="artists-items" id="artistsItems">
+        <div class="add-new-item">
+          <div>
+          <p>+ Add new Item</p>
+          </div>
+        </div>
+        <div class="items">
+          <div class="container">
+            <div class="item-container">
+              
+            </div>
+           
+          </div>
+        </div>
+
+        <div class="add-item">
+          <form>
+          <div class="add-item__input-container">
+            <h2>Add new Item</h2>
+            <label class="add-item__is-published">
+              <span>Is published</span>
+              <input class="input input--light" id="isPublished" type="checkbox">
+           
+            </label>
+          </div>
+          <label class="add-item__title">
+            <span>Title</span>
+            <input class="input input--light" type="text" id="itemTitle">
+          </label>
+          <label class="add-item__description">
+            <span>Description</span>
+            <textarea class="input input--light" id="itemDescription"></textarea>
+          </label>
+          <div class="add-item__input-container">
+            <label class="add-item__type">
+              <span>Type</span>
+              <select class="input input--light" id="itemType">
+                <option value="">Choose</option>
+              </select>
+            </label>
+            <label class="add-item__price">
+              <span>Price</span>
+              <input class="input input--light" type="number" id="itemPrice">
+            </label>
+          </div>
+          <label class="add-item__imageURL">
+            <span>Image URL</span>
+            <input class="input input--light" type="text" id="itemImage">
+          </label>
+          </form>
+          <p>or</p>
+          <div class="add-item__snapshot">
+            <i class="fa-solid fa-camera"></i>
+            <p>Take a snapshot</p>
+          </div>
+          <img src="" class="camera-output">
+          <div class="add-item__btn-container">
+            <button class="add-item__btn">Add New Item</button>
+            <button class="add-item__cancel-btn">Cancel</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Take snapshot -->
+
+      <section class="take-snapshot" id="takeSnapshot">
+        <div class="capture-image-popup">
+          <div id="camera">
+            <video id="video" class="video" width="340" autoplay></video>
+          </div>
+          <canvas class="canvas" id="canvas"></canvas>
+          <div class="camera-output">
+            <img src="" id="camera-output__image">
+          </div>
+          <button id="capture-photo" class="capture-image"><i class="fa-solid fa-camera"></i></button>
+        </div>
+      </section>
+
+      <!-- Visitor home page -->
+      <section class="visitor-home-page" id="visitorHomePage">
+        <div class="showcase">
+          <h1 class="">Looking for masterpiece?</h1>
+          <a href="#visitor/listing" class="btn btn--dark">Find one now!</a>
+        </div>
+        <div class="sliders">
+          <div class="slider">
+            <div class="slider__slide-track slider__slide-track--1">
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art1.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art2.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art3.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art4.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art5.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art6.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art7.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art8.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art9.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art1.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art2.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art3.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art4.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art5.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art6.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art7.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art8.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art9.png" alt="" />
+              </a>
+            </div>
+          </div>
+
+          <div class="slider">
+            <div class="slider__slide-track slider__slide-track--2">
+              <a class="slider__slide">
+                <img src="./images/art9.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art3.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art8.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art5.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art1.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art6.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art2.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art4.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art7.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art9.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art3.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art8.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art5.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art1.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art6.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art2.jpg" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art4.png" alt="" />
+              </a>
+
+              <a href="#visitor/listing" class="slider__slide">
+                <img src="./images/art7.jpg" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel">
+          <div class="slide">
+            <div>
+              <div class="testimonial">
+                <img
+                  class="testimonial__photo"
+                  src="./images/person1.jpg"
+                  alt=""
+                />
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                  aliquam, purus sit amet luctus venenatis.
+                </p>
+              </div>
+              <div class="feature">
+                <div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                    aliquam, purus sit amet luctus venenatis, lectus magna
+                    fringilla urna, porttitor
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div>
+              <div class="testimonial">
+                <img
+                  class="testimonial__photo"
+                  src="./images/person2.jpg"
+                  alt=""
+                />
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore laboriosam, cupiditate ad?
+                </p>
+              </div>
+              <div class="feature">
+                <div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur quidem voluptatem alias harum veritatis, 
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div>
+              <div class="testimonial">
+                <img
+                  class="testimonial__photo"
+                  src="./images/person3.jpg"
+                  alt=""
+                />
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa beatae natus quos ad omnis 
+                </p>
+              </div>
+              <div class="feature">
+                <div>
+                  <p>
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt in est officiis. Est beatae obcaecati 
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel__btn carousel__btn--left"></div>
+          <div class="carousel__btn carousel__btn--right"></div>
+        </div>
+      </section>
+
+      <!-- Visitor listing -->
+      <section class="visitor-listings" id="visitorListings">
+        <div class="container">
+          <div class="artwork-container "></div>
+        </div>
+        <!-- <div class="preview-card">
+          <img src="" alt="">
+          <div>
+            <div>
+              <p class="artist-name"></p>
+              <p class="price"></p>
+            </div>
+            <p class="item-title"></p>
+            <p class="desc"></p>
+          </div>
+        </div> -->
+        <button class="open-filter-nav">
+          <img src="./images/filter.png" alt="">
+        </button>
+        <div class="filter-nav filter-nav--primary">
+          <div class="filter-nav filter-nav--secondary">
+            <div class="filter-nav filter-nav--tertiary">
+              <h2 class="filter-nav__heading">Filter by</h2>
+              <form>
+              <div class="filter-by-title filter-option">
+                <p>By item title</p>
+                <input class="input input--light" type="text" name="" id="filterByTitle" />
+              </div>
+              <div class="filter-by-artist filter-option">
+                <p>By artist</p>
+                <select class="input input--light" id="filterByArtist">
+                  <option value="">Choose</option>
+                </select>
+              </div>
+              <div class="filter-by-price filter-option">
+                <p>By price</p>
+                <div>
+                  <label>
+                    <span>Min:</span>
+                    <input class="input input--light" type="number" id="filterByMinPrice"/>
+                  </label>
+
+                  <label>
+                    <span>Max:</span>
+                    <input class="input input--light" type="number" id="filterByMaxPrice" />
+                  </label>
+                </div>
+              </div>
+              <div class="by-type filter-option">
+                <p>By type</p>
+                <select class="input input--light" id="filterByType">
+                  <option value="">Choose</option>
+                </select>
+              </div>
+            
+              </form>
+              <button class="filter-nav__close-filter-nav"></button>
+              <button class="filter-nav__apply"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="auction-page" id="auctionPage">
+        <p class="auction-error">No item sent for auction</p>
+        <div class="container auction-page-container">
+        <div class="auction-item-container">
+          <div class="image-container">
+            <img class="auctioning-image" src="">
+          </div>
+          <div class="item-details-container">
+            <h2 class="auctioning-item-title"></h2>
+            <h3 class="description-heading">Description</h3>
+            <p class="auctioning-item-description"></p>
+            <h3 class="artist-heading">Artist</h3>
+            <p class="auctioning-item-artist"></p>
+            <div class="progress-bar"></div>
+            <div class="auction-info">
+            <div class="min-bid-container">
+            <p>Minimum bid</p>
+            <p class="min-bid"></p>
+            </div>
+            <div class="auctioning-timer-container">
+            <p>Time left</p>
+            <p class="auctioning-timer"></p>
+            </div>
+            </div>
+            <div class="bid-amount-container">
+            <input type="number" class="bid-amount input input--dark">
+            <button class="place-bid-button">Place a Bid</button>
+            </div>
+          </div>
+        </div>
+        <div class="bidding-amounts"></div>
+        </div>
+      </section>
+
+      <script
+        src="https://kit.fontawesome.com/77809b790c.js"
+        crossorigin="anonymous"
+      ></script>
+      <script src="./Data/data.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+
+      <script src="./scripts/homePage.js"></script>
+      <script src="./scripts/visitorHomePage.js"></script>
+      <script src="./scripts/visitorListings.js"></script>
+      <script src="./scripts/auctionPage.js"></script>
+      <script src="./scripts/artistHomePage.js"></script>
+      <script src="./scripts/takeSnapshot.js"></script>
+      <script src="./scripts/artistsItems.js"></script>
+      <script defer src="./scripts/script.js"></script>
+    </main>
+  </body>
+</html>

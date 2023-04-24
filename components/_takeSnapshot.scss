@@ -1,0 +1,33 @@
+.take-snapshot {
+    min-height: calc(100vh - 9rem);
+    background-color: var(--primary-color-default);
+    overflow: hidden;
+    padding-top: 2.5rem;
+
+    .capture-image-popup {
+        // padding: 5rem;
+        text-align: center;
+  
+        #canvas {
+          display: none;
+          object-fit: cover;
+        }
+
+        .video {
+          object-fit: cover;
+          border-radius: 3px;
+        }
+
+        
+
+        .capture-image {
+            background-color: transparent;
+            color: var(--background-color-two);
+            border: 0;
+            font-size: 6rem;
+            cursor: pointer;
+        }
+      }
+
+
+}
